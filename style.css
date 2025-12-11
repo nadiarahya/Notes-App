@@ -1,0 +1,304 @@
+/* Import font dari Google Fonts untuk tampilan lebih menarik (opsional, tapi tambahkan di <head> HTML jika ingin) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body dengan background pastel */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Font modern dan mudah dibaca */
+    background: linear-gradient(135deg, #FFB6C1, #ADD8E6); /* Gradien pastel pink ke biru */
+    color: #333; /* Teks gelap untuk kontras */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh; /* Full height untuk efek gradien */
+}
+
+/* Header utama */
+h1 {
+    text-align: center;
+    color: #4B0082; /* Ungu gelap untuk judul */
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+}
+
+/* Link tambah catatan */
+body > a {
+    display: inline-block;
+    background-color: #98FB98; /* Hijau pastel */
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px; /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transition: all 0.3s ease; /* Efek transisi */
+    margin-bottom: 20px;
+}
+
+body > a:hover {
+    background-color: #90EE90; /* Hijau lebih terang saat hover */
+    transform: translateY(-2px); /* Efek angkat */
+}
+
+/* Container daftar catatan */
+.notes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Jarak antar item */
+    justify-content: center;
+}
+
+/* Link untuk kartu catatan */
+.note-link {
+    text-decoration: none; /* Hapus underline */
+    color: inherit; /* Warisi warna */
+    display: block; /* Agar link wrap div */
+}
+
+/* Item catatan (kartu) - ukuran kompak 2x2 */
+.note-item {
+    background-color: #F5F5F5; /* Abu-abu terang pastel */
+    border: 1px solid #DDA0DD; /* Border ungu lembut */
+    border-radius: 15px; /* Sudut melengkung */
+    padding: 15px; /* Padding lebih kecil */
+    width: 200px; /* Lebar lebih kecil untuk ukuran 2x2 */
+    max-height: 180px; /* Tinggi maksimal tetap */
+    overflow: hidden; /* Potong teks panjang */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Cursor pointer untuk indikasi klik */
+}
+
+.note-item:hover {
+    transform: scale(1.05); /* Efek zoom saat hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat */
+    background-color: #F0F0F0; /* Sedikit lebih terang saat hover */
+}
+
+.note-item h3 {
+    color: #4B0082; /* Ungu gelap untuk judul catatan */
+    margin-bottom: 8px; /* Margin lebih kecil */
+    font-weight: 600;
+    font-size: 16px; /* Font lebih kecil */
+    flex-shrink: 0; /* Judul tidak menyusut */
+}
+
+.note-item p {
+    color: #555; /* Teks isi lebih gelap */
+    margin-bottom: 10px; /* Margin lebih kecil */
+    line-height: 1.4; /* Line height lebih rapat */
+    flex-grow: 1; /* Isi mengisi ruang tersisa */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Titik-titik untuk teks panjang */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Batasi ke 3 baris */
+    -webkit-box-orient: vertical;
+    font-size: 14px; /* Font lebih kecil */
+}
+
+/* Tombol dalam item catatan - hanya Edit dan Hapus */
+.note-item .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Tombol di bawah */
+}
+
+.note-item a.edit, .note-item a.delete {
+    padding: 6px 12px; /* Padding lebih kecil */
+    text-decoration: none;
+    border-radius: 15px; /* Radius lebih kecil */
+    font-size: 12px; /* Font lebih kecil */
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+    margin: 0 3px; /* Margin lebih kecil */
+}
+
+.note-item a.edit {
+    background-color: #ADD8E6; /* Biru muda */
+    color: #333;
+}
+
+.note-item a.edit:hover {
+    background-color: #87CEEB; /* Biru lebih terang */
+}
+
+.note-item a.delete {
+    background-color: #FFB6C1; /* Pink pastel */
+    color: #333;
+}
+
+.note-item a.delete:hover {
+    background-color: #FFC0CB; /* Pink lebih terang */
+}
+
+/* Form (untuk add.php dan edit.php) */
+form {
+    background-color: #F5F5F5; /* Background kartu form */
+    border: 1px solid #DDA0DD;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form input, form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #DDA0DD;
+    border-radius: 10px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 16px;
+    background-color: #FFF; /* Putih untuk input */
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #ADD8E6; /* Fokus biru muda */
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.5); /* Glow efek */
+}
+
+form button {
+    background-color: #98FB98; /* Hijau pastel */
+    color: #333;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #90EE90;
+    transform: translateY(-2px);
+}
+
+form a { /* Link kembali */
+    display: inline-block;
+    margin-left: 10px;
+    color: #4B0082;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Pesan kosong */
+.notes-list p {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    width: 100%;
+}
+
+/* Halaman review */
+.note-detail {
+    background-color: #F5F5F5;
+    border: 1px solid #DDA0DD;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.note-detail h2 {
+    color: #4B0082;
+    margin-bottom: 20px;
+}
+
+.note-detail p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.note-detail a {
+    display: inline-block;
+    background-color: #98FB98;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.note-detail a:hover {
+    background-color: #90EE90;
+    transform: translateY(-2px);
+}
+
+/* Tombol di halaman review */
+.note-detail .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Jarak antar tombol */
+    margin-top: 20px;
+}
+
+.note-detail .actions a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.note-detail .actions .edit {
+    background-color: #ADD8E6; /* Biru muda */
+    color: #333;
+}
+
+.note-detail .actions .edit:hover {
+    background-color: #87CEEB;
+    transform: translateY(-2px);
+}
+
+.note-detail .actions .delete {
+    background-color: #FFB6C1; /* Pink pastel */
+    color: #333;
+}
+
+.note-detail .actions .delete:hover {
+    background-color: #FFC0CB;
+    transform: translateY(-2px);
+}
+
+.note-detail .actions .back {
+    background-color: #98FB98; /* Hijau pastel */
+    color: #333;
+}
+
+.note-detail .actions .back:hover {
+    background-color: #90EE90;
+    transform: translateY(-2px);
+}
+
+/* Responsivitas untuk mobile */
+@media (max-width: 600px) {
+    .note-item {
+        width: 100%; /* Full width di mobile */
+    }
+    body {
+        padding: 10px;
+    }
+}
